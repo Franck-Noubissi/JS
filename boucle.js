@@ -43,4 +43,4 @@ while(i<200) {
     i++
 }
 
-if() {}
+if(nlajkd == dfcd) {}
