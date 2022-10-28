@@ -1,26 +1,26 @@
 let annuaireExemple = [
     {
-        Nom : "Franck",
+        Nom : "franck",
         Telephone : "0666537549",
     },
     {
-        Nom : "Victor",
+        Nom : "victor",
         Telephone : "0505426566",
     },
     {
-        Nom : "Lionel",
+        Nom : "lionel",
         Telephone : "5415215155",
     },
     {
-        Nom : "Bassirou",
+        Nom : "bassirou",
         Telephone : "6260652052",
     },
     {
-        Nom : "Plud1",
+        Nom : "plusd1",
         Telephone : "6251515415",
     },
     {
-        Nom : "Franck",
+        Nom : "franck",
         Telephone : "0666537549",
     }
 ]
@@ -29,14 +29,13 @@ function annuaire(param1) {
     for (let i = 0; i < annuaireExemple.length; i++) {
         if (annuaireExemple[i].Nom.includes(param1)) {
             alert ("Nom : " + annuaireExemple[i].Nom + " Telephone : " + annuaireExemple[i].Telephone)
-        }
-        if (annuaireExemple[i].Telephone.includes(param1)) {
+        } else if (annuaireExemple[i].Telephone.includes(param1)) {
             alert ("Nom : " + annuaireExemple[i].Nom + " Telephone : " + annuaireExemple[i].Telephone)
-        }
+        } 
     }
 }
 
-console?log("Je suis le meilleur")
+console.log("Je suis le meilleur")
 
-let mot = prompt ("Rechercher un contact avec le nom")
+let mot = prompt ("Rechercher un contact avec le nom").toLowerCase()
 annuaire(mot)
