@@ -1,3 +1,4 @@
+/*
 function afficcherDeuxValeurs(name) {
     return name
 }
@@ -40,52 +41,97 @@ ask(
     "Do you agree ?",
     () => {console.log("You agreed.")},
     () => {console.log("You canceled the execution.")}
+
 )
 
+*/
 
 
-let userPoints = 0
-let computerPoints = 0
+let i =1;
+let TotalOrdi =0;
+let TotalUser=0
+var tab=["feuille","pierre","ciseaux"]
 
-for (let i = 1; i < 3; i++) {
-    console.log("CHIFFOUMI")
-
-function computerPicker(choice = 3) {
-    return Math.floor(Math.random() * choice)
-}
-computerPicker()
-
-if(computerPicker()==0) console.log("Pierre")
-else if(computerPicker()==1) console.log("Feuille")
-else if(computerPicker()==2) console.log("Ciseaux")
-
-function UserPicker () {
-    let userChoice = prompt("Entrez Pierre, Feuille ou Ciseaux ?")
-    return userChoice
+function OptionGame(option)
+{
+     return option[Math.floor(Math.random()*option.length)];
 }
 
-UserPicker()
+while(i<4){    
+    let option = prompt("Choisissez une option")
+    let SumOrdi = 0;
+    let SumUser = 0;
+    switch(OptionGame(tab)){
+        case 'pierre' :
+            if(option.toLowerCase()=='pierre')
+            {
+                SumOrdi++;
+                SumUser++;
+                console.log(" Manche "+i+" terminée : ScoreUser = ScoreOrdi "+SumUser+", option pierre choisie pour les 2 camps")
 
-function Game() {
-    if ((computerPicker() == 0 && UserPicker() == "Ciseaux") || (computerPicker() == 1 && UserPicker() == "Pierre") || (computerPicker() == 2 && UserPicker() == "Feuille")) {
-        console.log("Computer wins")
-        computerPoints+=1
-        alert ("Computer Wins " + computerPoints)
-    } else if ((UserPicker() == "Pierre" && computerPicker() == 2) || (UserPicker() == "Feuille" && computerPicker() == 0) || (UserPicker() == "Ciseaux" && computerPicker() == 0)) {
-        console.log("User wins")
-        userPoints+=1
-        alert ("User Wins " + userPoints)
-    } else if ((UserPicker() == "Ciseaux" && computerPicker() == 2) || (UserPicker() == "Pierre" && computerPicker() == 0) || (UserPicker() == "Feuille" && computerPicker() == 1)) {
-        console.log("Egality")
-        alert ("Egality")
-    } else {
-        alert ("Game finished " + "Computer = " + computerPoints + "User = " + userPoints)
+            }  
+            else if(option.toLowerCase()=='ciseaux')    
+            {
+                SumOrdi++;
+                console.log(" Manche "+i+" terminé : Vous avez perdu ScoreUser : "+SumUser+" l'ordi a choisi pierre et vous ciseaux")
+            }
+            else
+            {
+                SumUser++; 
+                console.log(" Manche "+i+" terminé : Vous avez gagné ScoreUser, "+SumUser+" l'ordi a choisi pierre et vous feuille")
+            }
+        break
+
+        case 'ciseaux' :
+            if(option.toLowerCase()=='ciseaux')
+            {
+                SumOrdi++;
+                SumUser++;
+                console.log(" Manche "+i+" terminée : ScoreUser = ScoreOrdi "+SumUser+", option ciseaux choisie pour les 2 camps")
+                
+
+            }  
+            else if(option.toLowerCase()=='pierre')    
+            {
+                SumUser++;
+                console.log(" Manche "+i+" terminé : Vous avez gagné ScoreUser, "+SumUser+" l'ordi a choisi ciseau et vous pierre")
+            }
+            else
+            {
+                SumOrdi++; 
+                console.log(" Manche "+i+" terminé : Vous avez perdu ScoreUser : "+SumUser+" l'ordi a choisi ciseau et vous feuille")
+            }
+        break
+
+        case 'feuille' :
+            if(option.toLowerCase()=='feuille')
+            {
+                SumOrdi++;
+                SumUser++;
+                console.log(" Manche "+i+" terminée : ScoreUser = ScoreOrdi "+SumUser+", option feuille choisie pour les 2 camps")
+            }  
+            else if(option.toLowerCase()=='ciseaux')    
+            {
+                SumUser++;
+                console.log(" Manche "+i+" terminé : Vous avez gagné ScoreUser, "+SumUser+" l'ordi a choisi feuille et vous ciseaux")
+            }
+            else
+            {
+                SumOrdi++; 
+                console.log(" Manche "+i+" terminé : Vous avez perdu ScoreUser : "+SumUser+" l'ordi a choisi feuille et vous pierre")
+            }
+        break
+
+        default:
+        console.log('entrer une valeur valide')    
+                
     }
-}
+    i++;
+    TotalOrdi += SumOrdi;
+    TotalUser += SumUser;
 
-    Game()
 }
-
+console.log(" Partie terminée, ScoreUser : "+TotalUser+", ScoreMachine : "+TotalOrdi)
 
 
 
